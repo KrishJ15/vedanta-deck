@@ -153,6 +153,14 @@
   .slide.active .reveal:nth-child(7){animation-delay:.42s}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (max-width:620px){.ctl label{min-width:86px}.ctl .out{min-width:92px;font-size:13px}.counter{display:none}}
+  .grad{background-size:220% 220%;animation:gradslide 9s ease-in-out infinite}
+  .glow{animation:glowdrift 22s ease-in-out infinite alternate}
+  @keyframes gradslide{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes glowdrift{from{transform:translate(0,0) scale(1)}to{transform:translate(-2.5%,2%) scale(1.06)}}
+  .card,.feat,.ret,.risk .item{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s,border-color .28s}
+  .card:hover,.feat:hover,.ret:hover,.risk .item:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(12,19,34,.13)}
+  .feat:hover,.ret:hover,.risk .item:hover{border-color:#cdd7ea}
+  @media (prefers-reduced-motion:reduce){.grad,.glow{animation:none}}
 </style>
 </head>
 <body>
@@ -218,12 +226,12 @@
     <section class="slide">
       <div class="wrap">
         <div class="eyebrow reveal">The current unit</div>
-        <h2 class="reveal" style="margin-top:16px">Why it's a great opportunity</h2>
+        <h2 class="reveal" style="margin-top:16px">Why we like this one</h2>
         <div class="reveal tag grad" style="margin-top:16px">4 BHK · 2,786 sqft · 3rd floor</div>
         <div class="points reveal">
-          <div class="point"><div class="n grad">01</div><p><b>Only 5 four-bedroom units in the whole project — all sold out.</b> A 4BHK here isn't otherwise available, which makes this a rare opportunity.</p></div>
-          <div class="point"><div class="n grad">02</div><p><b>2,786 sqft on the 3rd floor.</b> Spacious, well-positioned, and the kind of layout families look for.</p></div>
-          <div class="point"><div class="n grad">03</div><p><b>Scarcity, demand, and a prime Chetpet address all meet on one flat.</b> With no competing 4BHKs available and steady demand for the location, resale comes down to how efficiently and promptly we sell.</p></div>
+          <div class="point"><div class="n grad">01</div><p><b>It's one of only five 4-bedroom homes here, and the others are already taken.</b> A 4BHK in this project doesn't usually come up, so the chance to take one on is uncommon.</p></div>
+          <div class="point"><div class="n grad">02</div><p><b>2,786 sqft on the 3rd floor.</b> A comfortable size on a floor that tends to suit families — the kind of home people look for.</p></div>
+          <div class="point"><div class="n grad">03</div><p><b>Limited availability and a settled Chetpet location.</b> We think there's steady interest for a home like this — though, as always, the outcome comes down to selling it well and at the right time.</p></div>
         </div>
       </div>
     </section>
