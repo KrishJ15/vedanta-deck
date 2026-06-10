@@ -151,6 +151,7 @@
   .slide.active .reveal:nth-child(5){animation-delay:.28s}
   .slide.active .reveal:nth-child(6){animation-delay:.35s}
   .slide.active .reveal:nth-child(7){animation-delay:.42s}
+  .slide.active .reveal:nth-child(8){animation-delay:.49s}
   @keyframes rise{to{opacity:1;transform:none}}
   @media (max-width:620px){.ctl label{min-width:86px}.ctl .out{min-width:92px;font-size:13px}.counter{display:none}}
   .grad{background-size:220% 220%;animation:gradslide 9s ease-in-out infinite}
@@ -258,9 +259,10 @@
           <div class="row less"><span class="lbl">Balance to developer</span><span class="amt">₹91.4 L</span></div>
           <div class="row less"><span class="lbl">Legal fees</span><span class="amt">₹2.0 L</span></div>
           <div class="row less"><span class="lbl">Commission (2%)</span><span class="amt">₹10.4 L</span></div>
-          <div class="row less"><span class="lbl">Interest on balance (12%)</span><span class="amt">₹2.5 L</span></div>
+          <div class="row less"><span class="lbl">Interest on balance, to developer (12%)</span><span class="amt">₹2.5 L</span></div>
           <div class="row net"><span class="lbl">What we make together</span><span class="amt grad">₹54.7 L</span></div>
         </div>
+        <p class="note reveal" style="margin-top:12px;max-width:72ch;line-height:1.6">Interest on the part of the price still owed to the developer — instead of raising more from us upfront, that balance stays at 12% a year until the sale clears it.</p>
         <div class="retchips reveal">
           <div class="ret"><div class="k">Return on capital</div><div class="v grad">15.2%</div></div>
           <div class="ret"><div class="k">Annualised (180 days)</div><div class="v grad">30.7%</div></div>
@@ -286,7 +288,7 @@
           <div class="controls reveal">
             <div class="ctl"><label for="r">Resale price</label><input type="range" id="r" min="16500" max="24000" step="100" value="18741"><span class="out" id="ro"></span></div>
             <div class="ctl"><label for="d">Hold period</label><input type="range" id="d" min="60" max="365" step="10" value="180"><span class="out" id="do"></span></div>
-            <div class="ctl"><label>Interest on balance</label><span class="out" style="margin-left:auto">12% (fixed)</span></div>
+            <div class="ctl"><label>Interest on balance, to developer</label><span class="out" style="margin-left:auto">12% (fixed)</span></div>
           </div>
           <div class="calc-cards reveal">
             <div class="card"><div class="k">What we all make</div><div class="v grad" id="mp" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
