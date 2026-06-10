@@ -259,7 +259,7 @@
           <div class="row less"><span class="lbl">Legal fees</span><span class="amt">₹2.0 L</span></div>
           <div class="row less"><span class="lbl">Commission (2%)</span><span class="amt">₹10.4 L</span></div>
           <div class="row less"><span class="lbl">Interest on balance (12%)</span><span class="amt">₹2.5 L</span></div>
-          <div class="row net"><span class="lbl">Net profit</span><span class="amt grad">₹54.7 L</span></div>
+          <div class="row net"><span class="lbl">What we make together</span><span class="amt grad">₹54.7 L</span></div>
         </div>
         <div class="retchips reveal">
           <div class="ret"><div class="k">Return on capital</div><div class="v grad">15.2%</div></div>
@@ -289,8 +289,8 @@
             <div class="ctl"><label>Interest on balance</label><span class="out" style="margin-left:auto">12% (fixed)</span></div>
           </div>
           <div class="calc-cards reveal">
-            <div class="card"><div class="k">Net profit (entire transaction)</div><div class="v grad" id="mp" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
-            <div class="card"><div class="k">Return on capital</div><div class="v" id="ra" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
+            <div class="card"><div class="k">What we all make</div><div class="v grad" id="mp" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
+            <div class="card"><div class="k">Return on what we put in</div><div class="v" id="ra" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
             <div class="card hero"><div class="k">Annualised</div><div class="v" id="rn" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
           </div>
           <div class="reveal">
@@ -332,7 +332,7 @@
         <div class="tl reveal">
           <div class="step"><div class="node">1</div><div><div class="day">Day 0</div><div class="tt">Purchase the flat</div><div class="td">Capital is pooled and the unit is acquired.</div></div></div>
           <div class="step"><div class="node">2</div><div><div class="day">Day 1–150</div><div class="tt">Marketing &amp; sale</div><div class="td">We market the unit and work to close with the right buyer.</div></div></div>
-          <div class="step"><div class="node">3</div><div><div class="day">Day 151–180</div><div class="tt">Collection &amp; payout</div><div class="td">Sale payment is collected, and investors are repaid their capital plus profit.</div></div></div>
+          <div class="step"><div class="node">3</div><div><div class="day">Day 151–180</div><div class="tt">Collection &amp; payout</div><div class="td">Sale payment is collected, and we each get back our capital plus our share of the profit.</div></div></div>
         </div>
       </div>
     </section>
@@ -405,7 +405,7 @@
     $('ra').textContent=pct(ar); $('rn').textContent=pct(anr);
     var share=Math.min(inv,E13)/E13, yprofit=profit*share, yback=inv+yprofit;
     $('yp').textContent=amt(yprofit); $('yb').textContent=amt(yback);
-    $('stk').textContent='= '+(share*100).toFixed(1)+'% stake';
+    $('stk').textContent='= '+(share*100).toFixed(1)+'% of the pool';
     $('rv').textContent=amt(E15);
     var capR=Math.min(E13,E15), devR=Math.max(0,Math.min(E18,E15-capR));
     var costR=Math.max(0,Math.min(costs,E15-capR-devR)), prR=Math.max(0,profit);
