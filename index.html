@@ -142,6 +142,11 @@
   .tl .tt{font-size:15px;color:var(--ink);font-weight:600;margin-top:2px}
   .tl .td{font-size:14px;color:var(--muted);line-height:1.55;margin-top:3px;max-width:60ch}
   .bigline{font-family:var(--disp);font-weight:600;font-size:clamp(24px,3.4vw,38px);line-height:1.14;letter-spacing:-.01em;max-width:24ch}
+  .paysplit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+  .payitem{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .paytag{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--blue)}
+  .payamt{font-family:var(--disp);font-size:clamp(34px,5vw,52px);font-weight:700;margin-top:8px;line-height:1}
+  .paydesc{font-size:14px;color:var(--muted);line-height:1.6;margin-top:10px}
   ::-webkit-scrollbar{width:0;height:0}
   .reveal{opacity:0;transform:translateY(16px)}
   .slide.active .reveal{animation:rise .85s cubic-bezier(.2,.7,.2,1) forwards}
@@ -366,10 +371,9 @@
         </div>
         <div class="retchips reveal">
           <div class="ret"><div class="k">Held</div><div class="v">90 days</div></div>
-          <div class="ret"><div class="k">IRR (annualised)</div><div class="v grad">107.8%</div></div>
+          <div class="ret"><div class="k">IRR</div><div class="v grad">107.8%</div></div>
         </div>
         <p class="note reveal" style="margin-top:12px;max-width:74ch;line-height:1.6">This result is net of all costs — commission, legal and financing — and reflects long-term capital-gains tax at 12.5% (₹29.4 L), which our earlier projections hadn’t accounted for.</p>
-        <p class="note reveal" style="margin-top:10px;max-width:74ch;line-height:1.6">How you’ll be paid back: your capital, plus an interest portion, comes back by Saturday 3rd October. The rest — your share of the profit — follows as and when the buyer completes their payments.</p>
         <div class="yourbox reveal" style="margin-top:14px">
           <div class="yl">Enter what you put in, and the dates — your return splits into interest and profit:</div>
           <div class="yourrow" style="margin-top:12px;gap:14px;flex-wrap:wrap">
@@ -381,6 +385,71 @@
             <div><div class="k">Interest (21%/yr, with capital)</div><div class="v grad" id="rint">—</div></div>
             <div><div class="k">Profit, as buyer pays</div><div class="v grad" id="rexc">—</div></div>
             <div><div class="k">You get back in total</div><div class="v" id="ryb">—</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="wrap">
+        <div class="eyebrow reveal">How you get paid</div>
+        <h2 class="reveal" style="margin-top:16px">A simple example</h2>
+        <p class="lede reveal" style="margin-top:14px;max-width:62ch">Say you put in ₹100 and the deal returns 20% — you get back ₹120. Here’s how that ₹120 reaches you.</p>
+        <div class="paysplit reveal">
+          <div class="payitem">
+            <div class="paytag">Right away, with your capital</div>
+            <div class="payamt">₹105</div>
+            <div class="paydesc">Your ₹100 comes back, plus ₹5 paid as interest — recorded in the books.</div>
+          </div>
+          <div class="payitem">
+            <div class="paytag">Over the next ~6 months</div>
+            <div class="payamt grad">₹15</div>
+            <div class="paydesc">Your share of the profit, paid out as and when the buyer completes their payments.</div>
+          </div>
+        </div>
+        <p class="note reveal" style="margin-top:16px;max-width:70ch;line-height:1.6">On ₹100: ₹105 up front, ₹15 as the buyer pays — ₹120 in all.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="wrap">
+        <div class="eyebrow reveal">Your share</div>
+        <h2 class="reveal" style="margin-top:16px">Work out your own</h2>
+        <p class="lede reveal" style="margin-top:14px;max-width:60ch">Enter what you put in and the dates — it splits your return into interest and profit, just like the example.</p>
+        <div class="yourbox reveal">
+            <div class="yourrow">
+              <span class="yl">Your investment</span>
+              <div class="ivwrap"><span class="cur">₹</span><input type="number" id="inv" value="5000000" min="0" step="100000"><span class="stk" id="stk"></span></div>
+            </div>
+            <div class="yourstats">
+              <div><div class="k">Your profit</div><div class="v grad" id="yp">—</div></div>
+              <div><div class="k">You get back</div><div class="v" id="yb">—</div></div>
+            </div>
+          </div>
+          <div class="controls reveal">
+            <div class="ctl"><label for="r">Resale price</label><input type="range" id="r" min="16500" max="24000" step="100" value="18741"><span class="out" id="ro"></span></div>
+            <div class="ctl"><label for="d">Hold period</label><input type="range" id="d" min="60" max="365" step="10" value="180"><span class="out" id="do"></span></div>
+            <div class="ctl"><label>Interest on balance, to developer</label><span class="out" style="margin-left:auto">12% (fixed)</span></div>
+          </div>
+          <div class="calc-cards reveal">
+            <div class="card"><div class="k">What we all make</div><div class="v grad" id="mp" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
+            <div class="card"><div class="k">Return on what we put in</div><div class="v" id="ra" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
+            <div class="card hero"><div class="k">Annualised</div><div class="v" id="rn" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
+          </div>
+          <div class="reveal">
+            <div class="note" style="margin-bottom:8px">Where the resale proceeds go (<span id="rv"></span>)</div>
+            <div class="bar">
+              <span class="seg" id="s1" style="background:#9AA3B5"></span>
+              <span class="seg" id="s2" style="background:#2F6BFF"></span>
+              <span class="seg" id="s3" style="background:#8FB0FF"></span>
+              <span class="seg" id="s4" style="background:#0EA371"></span>
+            </div>
+            <div class="legend">
+              <div class="lg"><span class="dot2" style="background:#9AA3B5"></span>Capital returned<span class="val" id="l1"></span></div>
+              <div class="lg"><span class="dot2" style="background:#2F6BFF"></span>To developer<span class="val" id="l2"></span></div>
+              <div class="lg"><span class="dot2" style="background:#8FB0FF"></span>Costs &amp; interest<span class="val" id="l3"></span></div>
+              <div class="lg"><span class="dot2" style="background:#0EA371"></span>Net profit<span class="val" id="l4"></span></div>
+            </div>
           </div>
         </div>
       </div>
