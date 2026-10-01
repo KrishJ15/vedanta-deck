@@ -333,6 +333,27 @@
       </div>
     </section>
 
+    <section class="slide">
+      <div class="wrap">
+        <div class="eyebrow reveal">Your share</div>
+        <h2 class="reveal" style="margin-top:16px">What comes to you</h2>
+        <p class="lede reveal" style="margin-top:14px;max-width:60ch">Enter your share and the date you put it in. Everyone is paid back by 3 October — here’s how yours arrives.</p>
+        <div class="yourbox reveal" style="margin-top:16px">
+          <div class="yourrow" style="gap:18px;flex-wrap:wrap">
+            <div><div class="yl" style="margin-bottom:6px">Your share</div><div class="ivwrap"><span class="cur">₹</span><input type="number" id="pinv" value="2500000" min="0" step="100000"></div></div>
+            <div><div class="yl" style="margin-bottom:6px">You gave it on</div><input type="date" id="pdin" value="2026-06-29" style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--ink)"></div>
+            <div><div class="yl" style="margin-bottom:6px">You’re paid by</div><div style="font-family:var(--disp);font-weight:600;font-size:18px;padding:7px 0">3 October 2026</div></div>
+          </div>
+          <div class="yourstats" style="margin-top:20px">
+            <div><div class="k">By 3 Oct — capital + interest</div><div class="v" id="pnow">—</div></div>
+            <div><div class="k">Over ~6 months — your profit</div><div class="v grad" id="plater">—</div></div>
+            <div><div class="k">Total you receive</div><div class="v" id="ptot">—</div></div>
+          </div>
+          <div class="note" id="pnote" style="margin-top:14px;line-height:1.5"></div>
+        </div>
+      </div>
+    </section>
+
   </div>
   <button class="arrow prev" id="prev" aria-label="Previous slide">&#8249;</button>
   <button class="arrow next" id="next" aria-label="Next slide">&#8250;</button>
@@ -387,6 +408,25 @@
   }
   ['r','d','inv'].forEach(function(id){$(id).addEventListener('input',upd)});
   upd();
+})();
+</script>
+<script>
+(function(){
+  var RET=0.197574, IR=0.21, FIXED='2026-10-03';
+  function $(id){return document.getElementById(id)}
+  function rup(v){return '₹'+Math.round(v).toLocaleString('en-IN');}
+  function up(){
+    var a=+$('pinv').value||0, din=$('pdin').value;
+    var days=din?Math.max(0,(new Date(FIXED)-new Date(din))/86400000):0;
+    var total=a*RET, interest=a*IR*days/365; if(interest>total)interest=total;
+    var profit=total-interest;
+    $('pnow').textContent=rup(a+interest);
+    $('plater').textContent=rup(profit);
+    $('ptot').textContent=rup(a+total);
+    $('pnote').textContent='Interest about '+rup(interest)+' (21%/yr for '+Math.round(days)+' days), paid with your capital. Profit '+rup(profit)+' follows as the buyer pays.';
+  }
+  ['pinv','pdin'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',up);});
+  if($('pinv'))up();
 })();
 </script>
 </body>
