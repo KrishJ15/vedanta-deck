@@ -349,6 +349,10 @@
             <div><div class="k">Over ~6 months — your profit</div><div class="v grad" id="plater">—</div></div>
             <div><div class="k">Total you receive</div><div class="v" id="ptot">—</div></div>
           </div>
+          <div style="margin-top:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--bg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <div><div class="k">Total earned — interest + profit</div><div style="font-size:13px;color:var(--muted);margin-top:3px">19.76% on what you put in</div></div>
+            <div class="v grad" id="pearn" style="font-size:clamp(26px,3.6vw,38px)">—</div>
+          </div>
           <div class="note" id="pnote" style="margin-top:14px;line-height:1.5"></div>
         </div>
       </div>
@@ -423,6 +427,7 @@
     $('pnow').textContent=rup(a+interest);
     $('plater').textContent=rup(profit);
     $('ptot').textContent=rup(a+total);
+    $('pearn').textContent=rup(total);
     $('pnote').textContent='Interest about '+rup(interest)+' (21%/yr for '+Math.round(days)+' days), paid with your capital. Profit '+rup(profit)+' follows as the buyer pays.';
   }
   ['pinv','pdin'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',up);});
