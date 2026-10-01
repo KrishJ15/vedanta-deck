@@ -454,7 +454,7 @@
   var RET=0.197574;
   function $(id){return document.getElementById(id)}
   function amt(v){var x=Math.abs(v);var s=x>=1e7?'₹'+(x/1e7).toFixed(2)+' Cr':'₹'+(x/1e5).toFixed(1)+' L';return v<0?'-'+s:s;}
-  function u(){var a=+$('rinv').value||0;$('ryp').textContent=amt(a*RET);$('ryb').textContent=amt(a*(1+RET));}
+  function u(){var a=+$('rinv').value||0;$('ryp').textContent='₹'+Math.round(a*RET).toLocaleString('en-IN');$('ryb').textContent='₹'+Math.round(a*(1+RET)).toLocaleString('en-IN');}
   var el=$('rinv'); if(el){el.addEventListener('input',u); u();}
 })();
 </script>
