@@ -355,6 +355,33 @@
       </div>
     </section>
 
+    <section class="slide">
+      <div class="wrap">
+        <div class="eyebrow reveal">The result</div>
+        <h2 class="reveal" style="margin-top:16px">How it turned out</h2>
+        <p class="lede reveal" style="margin-top:14px;max-width:60ch">Sold at ₹20,450/sqft — above our conservative case, and in about 90 days rather than 180.</p>
+        <div class="capbar reveal">
+          <div><div class="k">What we made together</div><div class="cv grad">₹71.6 L</div></div>
+          <div><div class="k">Return on capital (90 days)</div><div class="cv">19.8%</div></div>
+        </div>
+        <div class="retchips reveal">
+          <div class="ret"><div class="k">Held</div><div class="v">90 days</div></div>
+          <div class="ret"><div class="k">IRR (annualised)</div><div class="v grad">~108%</div></div>
+        </div>
+        <p class="note reveal" style="margin-top:12px;max-width:72ch;line-height:1.6">Net of all costs — commission, legal, financing interest, and ₹29.4 L long-term capital-gains tax.</p>
+        <div class="yourbox reveal" style="margin-top:14px">
+          <div class="yl">For every ₹1 you put in, you got back about <b style="color:var(--green)">₹1.20</b> — enter what you put in:</div>
+          <div class="yourrow" style="margin-top:12px">
+            <div class="ivwrap"><span class="cur">₹</span><input type="number" id="rinv" value="2500000" min="0" step="100000"></div>
+          </div>
+          <div class="yourstats">
+            <div><div class="k">Your profit</div><div class="v grad" id="ryp">—</div></div>
+            <div><div class="k">You get back</div><div class="v" id="ryb">—</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
   <button class="arrow prev" id="prev" aria-label="Previous slide">&#8249;</button>
   <button class="arrow next" id="next" aria-label="Next slide">&#8250;</button>
@@ -419,6 +446,14 @@
   }
   ['r','d','inv'].forEach(function(id){$(id).addEventListener('input',upd)});
   upd();
+})();
+<script>
+(function(){
+  var RET=0.197574;
+  function $(id){return document.getElementById(id)}
+  function amt(v){var x=Math.abs(v);var s=x>=1e7?'₹'+(x/1e7).toFixed(2)+' Cr':'₹'+(x/1e5).toFixed(1)+' L';return v<0?'-'+s:s;}
+  function u(){var a=+$('rinv').value||0;$('ryp').textContent=amt(a*RET);$('ryb').textContent=amt(a*(1+RET));}
+  var el=$('rinv'); if(el){el.addEventListener('input',u); u();}
 })();
 </script>
 </body>
