@@ -22,67 +22,57 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;overflow:hidden}
-
   #deck{height:100%;width:100%;position:relative;overflow:hidden}
-  .glow{position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(60vw 50vh at 88% -8%,rgba(47,107,255,.10),transparent 70%),
-               radial-gradient(55vw 50vh at 0% 108%,rgba(14,163,113,.12),transparent 70%)}
+  .glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60vw 50vh at 88% -8%,rgba(47,107,255,.10),transparent 70%),radial-gradient(55vw 50vh at 0% 108%,rgba(14,163,113,.12),transparent 70%)}
   .prog{position:absolute;top:0;left:0;height:3px;background:var(--grad);z-index:25;transition:width .6s cubic-bezier(.7,0,.2,1);border-radius:0 3px 3px 0}
   .track{display:flex;height:100%;width:100%;transition:transform .65s cubic-bezier(.7,0,.2,1);position:relative;z-index:1}
   .slide{min-width:100%;flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;padding:clamp(34px,6vw,96px);overflow-y:auto}
   .wrap{width:100%;max-width:1020px;margin:auto}
-
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.04em;color:var(--green);font-weight:600;text-transform:uppercase}
   .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad)}
   h1{font-family:var(--disp);font-weight:600;font-size:clamp(60px,12vw,138px);line-height:.92;letter-spacing:-.03em}
   h2{font-family:var(--disp);font-weight:600;font-size:clamp(32px,5.6vw,62px);line-height:1.02;letter-spacing:-.02em}
-  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 220%;animation:gradslide 9s ease-in-out infinite}
   .lede{font-size:clamp(16px,1.9vw,20px);line-height:1.75;color:var(--muted);font-weight:400;max-width:58ch}
   .muted{color:var(--muted)} .faint{color:var(--faint)}
   .block-label{font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:9px}
-
   .nav{position:absolute;bottom:28px;left:0;right:0;display:flex;justify-content:center;gap:22px;z-index:20;pointer-events:none}
-  .dots{display:flex;gap:9px;pointer-events:auto}
+  .dots{display:flex;gap:9px;pointer-events:auto;flex-wrap:wrap;justify-content:center;max-width:70%}
   .dot{width:7px;height:7px;border-radius:50%;background:#D5DBE6;border:0;cursor:pointer;transition:.3s;padding:0}
   .dot.on{width:22px;border-radius:5px;background:var(--grad)}
   .arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.85);color:var(--ink);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:20;transition:.22s;box-shadow:var(--shadow)}
-  .arrow:hover{color:var(--blue);transform:translateY(-50%) scale(1.06)}
+  .arrow:hover{color:var(--blue)}
   .arrow.prev{left:max(16px,2.4vw)} .arrow.next{right:max(16px,2.4vw)}
   .arrow[disabled]{opacity:0;pointer-events:none}
   .counter{position:absolute;top:28px;right:max(24px,3.2vw);font-size:12px;letter-spacing:.1em;color:var(--faint);z-index:20;font-weight:500}
   .counter b{color:var(--ink)}
-
   .cover-grid{display:grid;gap:clamp(20px,3.6vh,40px)}
   .spec{display:inline-flex;gap:14px;flex-wrap:wrap;font-size:clamp(13px,1.5vw,15px);letter-spacing:.02em;color:var(--muted);font-weight:500}
   .threecol{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-  .feat{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px 22px;box-shadow:var(--shadow)}
-  .feat p{font-size:14px;line-height:1.65;color:var(--muted);font-weight:400}
+  .feat{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .feat p{font-size:14px;line-height:1.65;color:var(--muted)}
   .tag{font-family:var(--disp);font-weight:500;font-size:clamp(19px,2.4vw,26px)}
-
   .flow{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-  .flow span{font-size:12.5px;letter-spacing:.01em;color:var(--ink);font-weight:500;padding:10px 18px;border:1px solid var(--line);border-radius:40px;background:var(--bg)}
+  .flow span{font-size:12.5px;color:var(--ink);font-weight:500;padding:10px 18px;border:1px solid var(--line);border-radius:40px;background:var(--bg)}
   .flow span b{color:var(--blue);font-weight:700}
-
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:30px}
   .card{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
-  .card .k{font-size:12px;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;font-weight:600}
+  .card .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600}
   .card .v{font-family:var(--disp);font-size:clamp(28px,4.2vw,44px);font-weight:600;margin-top:8px;line-height:1;letter-spacing:-.02em}
   .card.hero{background:var(--grad);border:0} .card.hero .k{color:rgba(255,255,255,.85)} .card.hero .v{color:#fff}
-
   .points{margin-top:24px}
   .point{display:flex;gap:22px;padding:21px 0;border-top:1px solid var(--line2)}
   .point:last-child{border-bottom:1px solid var(--line2)}
   .point .n{font-family:var(--disp);font-size:26px;font-weight:600;line-height:1;min-width:34px}
-  .point p{font-size:15px;line-height:1.66;color:var(--muted);font-weight:400;max-width:64ch}
+  .point p{font-size:15px;line-height:1.66;color:var(--muted);max-width:64ch}
   .point p b{font-weight:600;color:var(--ink)}
-
   .assume{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
   .chip{font-size:13px;font-weight:500;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 15px}
   .chip b{color:var(--green);font-weight:700}
   .stmt{background:var(--bg);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:8px 26px;margin-top:22px}
   .row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line2);font-size:15px}
   .row:last-child{border-bottom:0}
-  .row .lbl{color:var(--muted);font-weight:400} .row .amt{font-weight:600;font-variant-numeric:tabular-nums}
+  .row .lbl{color:var(--muted)} .row .amt{font-weight:600;font-variant-numeric:tabular-nums}
   .row.top .lbl{color:var(--ink);font-weight:600} .row.top .amt{color:var(--ink)}
   .row.less .lbl{padding-left:18px;position:relative} .row.less .lbl::before{content:"–";position:absolute;left:0;color:var(--faint)}
   .row.net{border-top:2px solid var(--ink);border-bottom:0;margin-top:2px;padding:18px 0}
@@ -90,12 +80,11 @@
   .row.net .amt{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,30px)}
   .retchips{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
   .ret{border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:var(--bg)}
-  .ret .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.02em}
+  .ret .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600}
   .ret .v{font-family:var(--disp);font-size:clamp(26px,3.6vw,40px);font-weight:700;margin-top:5px;line-height:1}
-
   .capbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
   .capbar>div{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:18px 22px}
-  .capbar .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.02em}
+  .capbar .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600}
   .capbar .cv{font-family:var(--disp);font-size:clamp(26px,3.4vw,38px);font-weight:700;margin-top:5px;line-height:1}
   .calc{display:grid;gap:22px}
   .yourbox{background:linear-gradient(120deg,var(--green-soft),var(--blue-soft));border:1px solid var(--line);border-radius:20px;padding:24px 26px}
@@ -105,20 +94,17 @@
   .ivwrap .cur{color:var(--muted);font-size:15px;font-weight:600}
   .stk{font-size:12.5px;color:var(--green);font-weight:600}
   .yourstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:18px;margin-top:18px}
-  .yourstats .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;font-weight:600}
+  .yourstats .k{font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:600}
   .yourstats .v{font-family:var(--disp);font-size:clamp(26px,3.6vw,38px);font-weight:700;margin-top:4px;line-height:1}
-
   .controls{display:flex;flex-direction:column;gap:18px}
   .ctl{display:flex;align-items:center;gap:16px}
   .ctl label{font-size:13px;color:var(--muted);min-width:118px;font-weight:500}
   .ctl .out{font-size:14.5px;font-weight:600;min-width:120px;text-align:right;color:var(--ink)}
-
   input[type=number]{background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--sans);font-size:15px;font-weight:600;padding:9px 12px;border-radius:10px;width:144px;outline:none}
-  input[type=number]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(47,107,255,.15)}
+  input[type=number]:focus{border-color:var(--blue)}
   input[type=range]{-webkit-appearance:none;appearance:none;height:4px;background:var(--line);border-radius:4px;flex:1;outline:none}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--blue);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 5px rgba(12,19,34,.25)}
   input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--blue);cursor:pointer;border:3px solid #fff}
-
   .calc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
   .bar{display:flex;height:28px;width:100%;border-radius:8px;overflow:hidden;background:var(--bg2)}
   .seg{height:100%}
@@ -127,7 +113,6 @@
   .lg .dot2{width:11px;height:11px;border-radius:3px;flex:none}
   .lg .val{margin-left:auto;color:var(--ink);font-weight:600}
   .note{font-size:12.5px;color:var(--faint);margin-top:4px}
-
   .risk{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:24px}
   .risk .item{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
   .risk .rk{font-weight:600;color:var(--ink);font-size:15px;display:flex;gap:9px;align-items:flex-start}
@@ -138,13 +123,13 @@
   .tl .step:last-child{padding-bottom:0}
   .tl .node{width:34px;height:34px;border-radius:50%;background:var(--grad);color:#fff;font-family:var(--disp);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none;z-index:1}
   .tl .step:not(:last-child)::before{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
-  .tl .day{font-size:12px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.02em}
+  .tl .day{font-size:12px;font-weight:600;color:var(--blue);text-transform:uppercase}
   .tl .tt{font-size:15px;color:var(--ink);font-weight:600;margin-top:2px}
   .tl .td{font-size:14px;color:var(--muted);line-height:1.55;margin-top:3px;max-width:60ch}
   .bigline{font-family:var(--disp);font-weight:600;font-size:clamp(24px,3.4vw,38px);line-height:1.14;letter-spacing:-.01em;max-width:24ch}
   .paysplit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
   .payitem{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
-  .paytag{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--blue)}
+  .paytag{font-size:12px;font-weight:600;text-transform:uppercase;color:var(--blue)}
   .payamt{font-family:var(--disp);font-size:clamp(34px,5vw,52px);font-weight:700;margin-top:8px;line-height:1}
   .paydesc{font-size:14px;color:var(--muted);line-height:1.6;margin-top:10px}
   ::-webkit-scrollbar{width:0;height:0}
@@ -156,17 +141,10 @@
   .slide.active .reveal:nth-child(5){animation-delay:.28s}
   .slide.active .reveal:nth-child(6){animation-delay:.35s}
   .slide.active .reveal:nth-child(7){animation-delay:.42s}
-  .slide.active .reveal:nth-child(8){animation-delay:.49s}
   @keyframes rise{to{opacity:1;transform:none}}
-  @media (max-width:620px){.ctl label{min-width:86px}.ctl .out{min-width:92px;font-size:13px}.counter{display:none}}
-  .grad{background-size:220% 220%;animation:gradslide 9s ease-in-out infinite}
-  .glow{animation:glowdrift 22s ease-in-out infinite alternate}
   @keyframes gradslide{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-  @keyframes glowdrift{from{transform:translate(0,0) scale(1)}to{transform:translate(-2.5%,2%) scale(1.06)}}
-  .card,.feat,.ret,.risk .item{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s,border-color .28s}
-  .card:hover,.feat:hover,.ret:hover,.risk .item:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(12,19,34,.13)}
-  .feat:hover,.ret:hover,.risk .item:hover{border-color:#cdd7ea}
-  @media (prefers-reduced-motion:reduce){.grad,.glow{animation:none}}
+  @media (prefers-reduced-motion:reduce){.grad{animation:none}}
+  @media (max-width:620px){.ctl label{min-width:86px}.ctl .out{min-width:92px;font-size:13px}.counter{display:none}}
 </style>
 </head>
 <body>
@@ -183,18 +161,9 @@
           <div class="spec" style="margin-top:20px"><span>3 &amp; 4 BHK luxury homes</span><span>·</span><span>1,551–2,786 sqft</span></div>
         </div>
         <div class="threecol reveal">
-          <div class="feat">
-            <div class="block-label">Location</div>
-            <p>In the heart of Chetpet, life happens on foot — metro, the city's finest schools and hospitals, banks, markets, salons and parks, all a stroll away. Everything a family needs, without reaching for the car keys.</p>
-          </div>
-          <div class="feat">
-            <div class="block-label">Thoughtfully built</div>
-            <p>A boutique 40-home development, stilt plus five storeys, with generous spacing and expansive layouts. Only the last 8 units remain.</p>
-          </div>
-          <div class="feat">
-            <div class="block-label">Living, elevated</div>
-            <p>From marble-floored interiors to a gym, yoga deck, pickleball court, party lawn, kids' play area and landscaped terrace — every comfort is built in, indoors and out.</p>
-          </div>
+          <div class="feat"><div class="block-label">Location</div><p>In the heart of Chetpet, life happens on foot — metro, the city's finest schools and hospitals, banks, markets, salons and parks, all a stroll away. Everything a family needs, without reaching for the car keys.</p></div>
+          <div class="feat"><div class="block-label">Thoughtfully built</div><p>A boutique 40-home development, stilt plus five storeys, with generous spacing and expansive layouts. Only the last 8 units remain.</p></div>
+          <div class="feat"><div class="block-label">Living, elevated</div><p>From marble-floored interiors to a gym, yoga deck, pickleball court, party lawn, kids' play area and landscaped terrace — every comfort is built in, indoors and out.</p></div>
         </div>
         <p class="tag reveal grad">A home, and a location, built to hold their value.</p>
       </div>
@@ -205,12 +174,7 @@
         <div class="eyebrow reveal">The idea</div>
         <h2 class="reveal" style="margin-top:16px">What we're trying to do</h2>
         <p class="lede reveal" style="margin-top:26px">The approach is straightforward: acquire a home below market value, hold it for a period, identify the right buyer, and sell at a higher price — with the profit shared among everyone who comes in with us.</p>
-        <div class="flow reveal">
-          <span><b>01</b> &nbsp;Acquire the unit</span>
-          <span><b>02</b> &nbsp;Hold</span>
-          <span><b>03</b> &nbsp;Find the right buyer</span>
-          <span><b>04</b> &nbsp;Sell &amp; distribute</span>
-        </div>
+        <div class="flow reveal"><span><b>01</b> &nbsp;Acquire the unit</span><span><b>02</b> &nbsp;Hold</span><span><b>03</b> &nbsp;Find the right buyer</span><span><b>04</b> &nbsp;Sell &amp; distribute</span></div>
       </div>
     </section>
 
@@ -225,7 +189,7 @@
           <div class="card"><div class="k">Held for</div><div class="v">24 months</div></div>
           <div class="card hero"><div class="k">Annualised return</div><div class="v">16.2%</div></div>
         </div>
-        <p class="reveal muted" style="margin-top:22px;font-size:15px;line-height:1.7;max-width:64ch">We bought at ₹2.0 Cr and sold at ₹2.7 Cr — a ₹70 L gain of about 35%, or roughly 16% a year over the two-year hold. The timeline reflected an earlier stage of construction and a more involved transaction. With the project now close to handover, we expect a faster exit this time.</p>
+        <p class="reveal muted" style="margin-top:22px;font-size:15px;line-height:1.7;max-width:66ch">We bought at ₹2.0 Cr and sold at ₹2.7 Cr — a ₹70 L gain of about 35%, or roughly 16% a year over the two-year hold. The timeline reflected an earlier stage of construction and a more involved transaction. With the project now close to handover, we expect a faster exit this time.</p>
       </div>
     </section>
 
@@ -248,16 +212,8 @@
         <div class="eyebrow reveal">The economics</div>
         <h2 class="reveal" style="margin-top:14px">The deal in numbers</h2>
         <p class="lede reveal" style="margin-top:14px;max-width:62ch">A deliberately conservative case: resale at ₹18,741/sqft sits below recent sales in the project (₹19,251–₹20,200), so none of the upside is priced in.</p>
-        <div class="assume reveal">
-          <span class="chip">2,786 sqft</span>
-          <span class="chip">Acquire <b>₹16,241</b>/sqft</span>
-          <span class="chip">Resale <b>₹18,741</b>/sqft</span>
-          <span class="chip">Hold 180 days</span>
-        </div>
-        <div class="capbar reveal">
-          <div><div class="k">What we put in together</div><div class="cv">₹3.61 Cr</div></div>
-          <div><div class="k">What we share</div><div class="cv grad">₹54.7 L</div></div>
-        </div>
+        <div class="assume reveal"><span class="chip">2,786 sqft</span><span class="chip">Acquire <b>₹16,241</b>/sqft</span><span class="chip">Resale <b>₹18,741</b>/sqft</span><span class="chip">Hold 180 days</span></div>
+        <div class="capbar reveal"><div><div class="k">What we put in together</div><div class="cv">₹3.61 Cr</div></div><div><div class="k">What we share</div><div class="cv grad">₹54.7 L</div></div></div>
         <div class="stmt reveal">
           <div class="row top"><span class="lbl">Resale value</span><span class="amt">₹5.22 Cr</span></div>
           <div class="row less"><span class="lbl">Return of our capital</span><span class="amt">₹3.61 Cr</span></div>
@@ -267,11 +223,8 @@
           <div class="row less"><span class="lbl">Interest on balance, to developer (12%)</span><span class="amt">₹2.5 L</span></div>
           <div class="row net"><span class="lbl">What we make together</span><span class="amt grad">₹54.7 L</span></div>
         </div>
-        <p class="note reveal" style="margin-top:12px;max-width:72ch;line-height:1.6">Balance to developer is the part of the price we don’t fund upfront. It stays owed to the developer and is cleared from the sale proceeds — carrying 12% interest a year until then.</p>
-        <div class="retchips reveal">
-          <div class="ret"><div class="k">Return on capital</div><div class="v grad">15.2%</div></div>
-          <div class="ret"><div class="k">Annualised (180 days)</div><div class="v grad">30.7%</div></div>
-        </div>
+        <p class="note reveal" style="margin-top:12px;max-width:74ch;line-height:1.6">Balance to developer is the part of the price we don't fund upfront. It stays owed to the developer and is cleared from the sale proceeds — carrying 12% interest a year until then.</p>
+        <div class="retchips reveal"><div class="ret"><div class="k">Return on capital</div><div class="v grad">15.2%</div></div><div class="ret"><div class="k">Annualised (180 days)</div><div class="v grad">30.7%</div></div></div>
       </div>
     </section>
 
@@ -281,14 +234,8 @@
         <h2 class="reveal" style="margin-top:12px;margin-bottom:2px">Run your own scenario</h2>
         <div class="calc">
           <div class="yourbox reveal">
-            <div class="yourrow">
-              <span class="yl">Your investment</span>
-              <div class="ivwrap"><span class="cur">₹</span><input type="number" id="inv" value="5000000" min="0" step="100000"><span class="stk" id="stk"></span></div>
-            </div>
-            <div class="yourstats">
-              <div><div class="k">Your profit</div><div class="v grad" id="yp">—</div></div>
-              <div><div class="k">You get back</div><div class="v" id="yb">—</div></div>
-            </div>
+            <div class="yourrow"><span class="yl">Your investment</span><div class="ivwrap"><span class="cur">₹</span><input type="number" id="inv" value="5000000" min="0" step="100000"><span class="stk" id="stk"></span></div></div>
+            <div class="yourstats"><div><div class="k">Your profit</div><div class="v grad" id="yp">—</div></div><div><div class="k">You get back</div><div class="v" id="yb">—</div></div></div>
           </div>
           <div class="controls reveal">
             <div class="ctl"><label for="r">Resale price</label><input type="range" id="r" min="16500" max="24000" step="100" value="18741"><span class="out" id="ro"></span></div>
@@ -302,18 +249,8 @@
           </div>
           <div class="reveal">
             <div class="note" style="margin-bottom:8px">Where the resale proceeds go (<span id="rv"></span>)</div>
-            <div class="bar">
-              <span class="seg" id="s1" style="background:#9AA3B5"></span>
-              <span class="seg" id="s2" style="background:#2F6BFF"></span>
-              <span class="seg" id="s3" style="background:#8FB0FF"></span>
-              <span class="seg" id="s4" style="background:#0EA371"></span>
-            </div>
-            <div class="legend">
-              <div class="lg"><span class="dot2" style="background:#9AA3B5"></span>Capital returned<span class="val" id="l1"></span></div>
-              <div class="lg"><span class="dot2" style="background:#2F6BFF"></span>To developer<span class="val" id="l2"></span></div>
-              <div class="lg"><span class="dot2" style="background:#8FB0FF"></span>Costs &amp; interest<span class="val" id="l3"></span></div>
-              <div class="lg"><span class="dot2" style="background:#0EA371"></span>Net profit<span class="val" id="l4"></span></div>
-            </div>
+            <div class="bar"><span class="seg" id="s1" style="background:#9AA3B5"></span><span class="seg" id="s2" style="background:#2F6BFF"></span><span class="seg" id="s3" style="background:#8FB0FF"></span><span class="seg" id="s4" style="background:#0EA371"></span></div>
+            <div class="legend"><div class="lg"><span class="dot2" style="background:#9AA3B5"></span>Capital returned<span class="val" id="l1"></span></div><div class="lg"><span class="dot2" style="background:#2F6BFF"></span>To developer<span class="val" id="l2"></span></div><div class="lg"><span class="dot2" style="background:#8FB0FF"></span>Costs &amp; interest<span class="val" id="l3"></span></div><div class="lg"><span class="dot2" style="background:#0EA371"></span>Net profit<span class="val" id="l4"></span></div></div>
           </div>
         </div>
       </div>
@@ -349,14 +286,8 @@
         <div class="eyebrow reveal">The ask</div>
         <h2 class="reveal" style="margin-top:16px">If you'd like to take part</h2>
         <p class="bigline reveal" style="margin-top:18px">We're putting together <span class="grad">₹3.61 Cr</span> to acquire and resell this flat, with profit shared in proportion to what each of us puts in.</p>
-        <div class="flow reveal" style="margin-top:22px">
-          <span>Hold <b>~180 days</b></span>
-          <span>Profit shared <b>pro-rata</b></span>
-        </div>
-        <div class="points reveal" style="margin-top:6px">
-          <div class="point"><div class="n grad">01</div><p><b>Let us know</b> if you'd like to take part.</p></div>
-          <div class="point"><div class="n grad">02</div><p><b>Have questions?</b> Please reach out — we're glad to talk it through.</p></div>
-        </div>
+        <div class="flow reveal" style="margin-top:22px"><span>Hold <b>~180 days</b></span><span>Profit shared <b>pro-rata</b></span></div>
+        <div class="points reveal" style="margin-top:6px"><div class="point"><div class="n grad">01</div><p><b>Let us know</b> if you'd like to take part.</p></div><div class="point"><div class="n grad">02</div><p><b>Have questions?</b> Please reach out — we're glad to talk it through.</p></div></div>
       </div>
     </section>
 
@@ -365,28 +296,9 @@
         <div class="eyebrow reveal">The result</div>
         <h2 class="reveal" style="margin-top:16px">How it turned out</h2>
         <p class="lede reveal" style="margin-top:14px;max-width:60ch">Sold at ₹20,450/sqft — above our conservative case, and in about 90 days rather than 180.</p>
-        <div class="capbar reveal">
-          <div><div class="k">What we made together</div><div class="cv grad">₹71.6 L</div></div>
-          <div><div class="k">Return on capital (90 days)</div><div class="cv">19.76%</div></div>
-        </div>
-        <div class="retchips reveal">
-          <div class="ret"><div class="k">Held</div><div class="v">90 days</div></div>
-          <div class="ret"><div class="k">IRR</div><div class="v grad">107.8%</div></div>
-        </div>
-        <p class="note reveal" style="margin-top:12px;max-width:74ch;line-height:1.6">This result is net of all costs — commission, legal and financing — and reflects long-term capital-gains tax at 12.5% (₹29.4 L), which our earlier projections hadn’t accounted for.</p>
-        <div class="yourbox reveal" style="margin-top:14px">
-          <div class="yl">Enter what you put in, and the dates — your return splits into interest and profit:</div>
-          <div class="yourrow" style="margin-top:12px;gap:14px;flex-wrap:wrap">
-            <div class="ivwrap"><span class="cur">₹</span><input type="number" id="rinv" value="2500000" min="0" step="100000"></div>
-            <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px">Sent<input type="date" id="rdin" value="2026-06-29" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink)"></label>
-            <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px">Back<input type="date" id="rdout" value="2026-10-03" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink)"></label>
-          </div>
-          <div class="yourstats">
-            <div><div class="k">Interest (21%/yr, with capital)</div><div class="v grad" id="rint">—</div></div>
-            <div><div class="k">Profit, as buyer pays</div><div class="v grad" id="rexc">—</div></div>
-            <div><div class="k">You get back in total</div><div class="v" id="ryb">—</div></div>
-          </div>
-        </div>
+        <div class="capbar reveal"><div><div class="k">What we made together</div><div class="cv grad">₹71.6 L</div></div><div><div class="k">Return on capital (90 days)</div><div class="cv">19.76%</div></div></div>
+        <div class="retchips reveal"><div class="ret"><div class="k">Held</div><div class="v">90 days</div></div><div class="ret"><div class="k">IRR</div><div class="v grad">107.8%</div></div></div>
+        <p class="note reveal" style="margin-top:12px;max-width:74ch;line-height:1.6">This result is net of all costs — commission, legal and financing — and reflects long-term capital-gains tax at 12.5% (₹29.4 L), which our earlier projections hadn't accounted for.</p>
       </div>
     </section>
 
@@ -412,71 +324,19 @@
       <div class="wrap">
         <div class="eyebrow reveal">How you get paid</div>
         <h2 class="reveal" style="margin-top:16px">A simple example</h2>
-        <p class="lede reveal" style="margin-top:14px;max-width:62ch">Say you put in ₹100 and the deal returns 20% — you get back ₹120. Here’s how that ₹120 reaches you.</p>
+        <p class="lede reveal" style="margin-top:14px;max-width:62ch">Say you put in ₹100 and the deal returns 20% — you get back ₹120. Here's how that ₹120 reaches you.</p>
         <div class="paysplit reveal">
-          <div class="payitem">
-            <div class="paytag">Right away, with your capital</div>
-            <div class="payamt">₹105</div>
-            <div class="paydesc">Your ₹100 comes back, plus ₹5 paid as interest — recorded in the books.</div>
-          </div>
-          <div class="payitem">
-            <div class="paytag">Over the next ~6 months</div>
-            <div class="payamt grad">₹15</div>
-            <div class="paydesc">Your share of the profit, paid out as and when the buyer completes their payments.</div>
-          </div>
+          <div class="payitem"><div class="paytag">Right away, with your capital</div><div class="payamt">₹105</div><div class="paydesc">Your ₹100 comes back, plus ₹5 paid as interest — recorded in the books.</div></div>
+          <div class="payitem"><div class="paytag">Over the next ~6 months</div><div class="payamt grad">₹15</div><div class="paydesc">Your share of the profit, paid out as and when the buyer completes their payments.</div></div>
         </div>
         <p class="note reveal" style="margin-top:16px;max-width:70ch;line-height:1.6">On ₹100: ₹105 up front, ₹15 as the buyer pays — ₹120 in all.</p>
-      </div>
-    </section>
-
-    <section class="slide">
-      <div class="wrap">
-        <div class="eyebrow reveal">Your share</div>
-        <h2 class="reveal" style="margin-top:16px">Work out your own</h2>
-        <p class="lede reveal" style="margin-top:14px;max-width:60ch">Enter what you put in and the dates — it splits your return into interest and profit, just like the example.</p>
-        <div class="yourbox reveal">
-            <div class="yourrow">
-              <span class="yl">Your investment</span>
-              <div class="ivwrap"><span class="cur">₹</span><input type="number" id="inv" value="5000000" min="0" step="100000"><span class="stk" id="stk"></span></div>
-            </div>
-            <div class="yourstats">
-              <div><div class="k">Your profit</div><div class="v grad" id="yp">—</div></div>
-              <div><div class="k">You get back</div><div class="v" id="yb">—</div></div>
-            </div>
-          </div>
-          <div class="controls reveal">
-            <div class="ctl"><label for="r">Resale price</label><input type="range" id="r" min="16500" max="24000" step="100" value="18741"><span class="out" id="ro"></span></div>
-            <div class="ctl"><label for="d">Hold period</label><input type="range" id="d" min="60" max="365" step="10" value="180"><span class="out" id="do"></span></div>
-            <div class="ctl"><label>Interest on balance, to developer</label><span class="out" style="margin-left:auto">12% (fixed)</span></div>
-          </div>
-          <div class="calc-cards reveal">
-            <div class="card"><div class="k">What we all make</div><div class="v grad" id="mp" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
-            <div class="card"><div class="k">Return on what we put in</div><div class="v" id="ra" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
-            <div class="card hero"><div class="k">Annualised</div><div class="v" id="rn" style="font-size:clamp(24px,3.2vw,34px)">—</div></div>
-          </div>
-          <div class="reveal">
-            <div class="note" style="margin-bottom:8px">Where the resale proceeds go (<span id="rv"></span>)</div>
-            <div class="bar">
-              <span class="seg" id="s1" style="background:#9AA3B5"></span>
-              <span class="seg" id="s2" style="background:#2F6BFF"></span>
-              <span class="seg" id="s3" style="background:#8FB0FF"></span>
-              <span class="seg" id="s4" style="background:#0EA371"></span>
-            </div>
-            <div class="legend">
-              <div class="lg"><span class="dot2" style="background:#9AA3B5"></span>Capital returned<span class="val" id="l1"></span></div>
-              <div class="lg"><span class="dot2" style="background:#2F6BFF"></span>To developer<span class="val" id="l2"></span></div>
-              <div class="lg"><span class="dot2" style="background:#8FB0FF"></span>Costs &amp; interest<span class="val" id="l3"></span></div>
-              <div class="lg"><span class="dot2" style="background:#0EA371"></span>Net profit<span class="val" id="l4"></span></div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
   </div>
   <button class="arrow prev" id="prev" aria-label="Previous slide">&#8249;</button>
   <button class="arrow next" id="next" aria-label="Next slide">&#8250;</button>
-  <div class="counter"><b id="cnow">01</b> / <span id="ctot">06</span></div>
+  <div class="counter"><b id="cnow">01</b> / <span id="ctot">12</span></div>
   <div class="nav"><div class="dots" id="dots"></div></div>
 </div>
 <script>
@@ -504,59 +364,29 @@
   slides[0].classList.add('active'); go(0);
 
   var SQFT=2786, CHEQUE=12000, BASE=16241, CASH=BASE-CHEQUE;
-  var E7=25949600, E9=9315426;
-  var E2=CHEQUE*SQFT, E3=CASH*SQFT;
-  var E13=(E7+E7*0.05+E9)-E7*0.01-200000;
-  var E16=E2+E3, E18=E16-E13;
-  var BAL=[0.08061807449555247,0.07,0.05,0.02], TEN=[30,90,180,270];
-  var BSUM=BAL.reduce(function(a,b){return a+b},0);
+  var E7=25949600, E9=9315426, E2=CHEQUE*SQFT, E3=CASH*SQFT;
+  var E13=(E7+E7*0.05+E9)-E7*0.01-200000, E16=E2+E3, E18=E16-E13;
+  var BAL=[0.08061807449555247,0.07,0.05,0.02], TEN=[30,90,180,270], BSUM=BAL.reduce(function(a,b){return a+b},0);
   function amt(v){var x=Math.abs(v);var s=x>=1e7?'₹'+(x/1e7).toFixed(2)+' Cr':'₹'+(x/1e5).toFixed(1)+' L';return v<0?'-'+s:s;}
   function pct(v){return (v*100).toFixed(1)+'%';}
   function $(id){return document.getElementById(id)}
   function upd(){
     var rate=+$('r').value, days=+$('d').value, ir=0.12, inv=+$('inv').value||0;
-    $('ro').textContent='₹'+rate.toLocaleString('en-IN')+'/sqft';
-    $('do').textContent=days+' days';
+    $('ro').textContent='₹'+rate.toLocaleString('en-IN')+'/sqft'; $('do').textContent=days+' days';
     var E15=rate*SQFT, E20=E15*0.02, E19=200000, E21=0;
     for(var k=0;k<4;k++){var dep=E18*(BAL[k]/BSUM);var t=days-TEN[k];if(t>0)E21+=dep*t*ir/365;}
-    var costs=E19+E20+E21, profit=E15-E13-(E18+costs);
-    var ar=profit/E13, anr=ar*365/days;
-    $('mp').textContent=amt(profit);
-    $('ra').textContent=pct(ar); $('rn').textContent=pct(anr);
-    var share=Math.min(inv,E13)/E13, yprofit=profit*share, yback=inv+yprofit;
-    $('yp').textContent=amt(yprofit); $('yb').textContent=amt(yback);
+    var costs=E19+E20+E21, profit=E15-E13-(E18+costs), ar=profit/E13, anr=ar*365/days;
+    $('mp').textContent=amt(profit); $('ra').textContent=pct(ar); $('rn').textContent=pct(anr);
+    var share=Math.min(inv,E13)/E13, yprofit=profit*share;
+    $('yp').textContent=amt(yprofit); $('yb').textContent=amt(inv+yprofit);
     $('stk').textContent='= '+(share*100).toFixed(1)+'% of the pool';
     $('rv').textContent=amt(E15);
-    var capR=Math.min(E13,E15), devR=Math.max(0,Math.min(E18,E15-capR));
-    var costR=Math.max(0,Math.min(costs,E15-capR-devR)), prR=Math.max(0,profit);
-    var tot=E15>0?E15:1;
-    $('s1').style.width=(capR/tot*100)+'%'; $('s2').style.width=(devR/tot*100)+'%';
-    $('s3').style.width=(costR/tot*100)+'%'; $('s4').style.width=(prR/tot*100)+'%';
-    $('l1').textContent=amt(E13); $('l2').textContent=amt(E18);
-    $('l3').textContent=amt(costs); $('l4').textContent=amt(profit);
+    var capR=Math.min(E13,E15), devR=Math.max(0,Math.min(E18,E15-capR)), costR=Math.max(0,Math.min(costs,E15-capR-devR)), prR=Math.max(0,profit), tot=E15>0?E15:1;
+    $('s1').style.width=(capR/tot*100)+'%'; $('s2').style.width=(devR/tot*100)+'%'; $('s3').style.width=(costR/tot*100)+'%'; $('s4').style.width=(prR/tot*100)+'%';
+    $('l1').textContent=amt(E13); $('l2').textContent=amt(E18); $('l3').textContent=amt(costs); $('l4').textContent=amt(profit);
   }
   ['r','d','inv'].forEach(function(id){$(id).addEventListener('input',upd)});
   upd();
-})();
-</script>
-<script>
-(function(){
-  var RET=0.197574, IR=0.21;
-  function $(id){return document.getElementById(id)}
-  function rup(v){return '₹'+Math.round(v).toLocaleString('en-IN');}
-  function days(){var a=$('rdin').value,b=$('rdout').value;if(!a||!b)return 0;var d=(new Date(b)-new Date(a))/86400000;return d>0?d:0;}
-  function u(){
-    var a=+$('rinv').value||0;
-    var total=a*RET;
-    var interest=a*IR*days()/365;
-    if(interest>total)interest=total;
-    var excess=total-interest;
-    $('rint').textContent=rup(interest);
-    $('rexc').textContent=rup(excess);
-    $('ryb').textContent=rup(a+total);
-  }
-  ['rinv','rdin','rdout'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',u);});
-  u();
 })();
 </script>
 </body>
