@@ -371,13 +371,16 @@
         <p class="note reveal" style="margin-top:12px;max-width:74ch;line-height:1.6">This result is net of all costs — commission, legal and financing — and reflects long-term capital-gains tax at 12.5% (₹29.4 L), which our earlier projections hadn’t accounted for.</p>
         <p class="note reveal" style="margin-top:10px;max-width:74ch;line-height:1.6">How you’ll be paid back: your capital, plus an interest portion, comes back by Saturday 3rd October. The rest — your share of the profit — follows as and when the buyer completes their payments.</p>
         <div class="yourbox reveal" style="margin-top:14px">
-          <div class="yl">For every ₹1 you put in, you got back about <b style="color:var(--green)">₹1.20</b> — enter what you put in:</div>
-          <div class="yourrow" style="margin-top:12px">
+          <div class="yl">Enter what you put in, and the dates — your return splits into interest and profit:</div>
+          <div class="yourrow" style="margin-top:12px;gap:14px;flex-wrap:wrap">
             <div class="ivwrap"><span class="cur">₹</span><input type="number" id="rinv" value="2500000" min="0" step="100000"></div>
+            <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px">Sent<input type="date" id="rdin" value="2026-06-29" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink)"></label>
+            <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px">Back<input type="date" id="rdout" value="2026-10-03" style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:var(--sans);font-size:13px;color:var(--ink)"></label>
           </div>
           <div class="yourstats">
-            <div><div class="k">Your profit</div><div class="v grad" id="ryp">—</div></div>
-            <div><div class="k">You get back</div><div class="v" id="ryb">—</div></div>
+            <div><div class="k">Interest (21%/yr, with capital)</div><div class="v grad" id="rint">—</div></div>
+            <div><div class="k">Profit, as buyer pays</div><div class="v grad" id="rexc">—</div></div>
+            <div><div class="k">You get back in total</div><div class="v" id="ryb">—</div></div>
           </div>
         </div>
       </div>
@@ -451,11 +454,22 @@
 </script>
 <script>
 (function(){
-  var RET=0.197574;
+  var RET=0.197574, IR=0.21;
   function $(id){return document.getElementById(id)}
-  function amt(v){var x=Math.abs(v);var s=x>=1e7?'₹'+(x/1e7).toFixed(2)+' Cr':'₹'+(x/1e5).toFixed(1)+' L';return v<0?'-'+s:s;}
-  function u(){var a=+$('rinv').value||0;$('ryp').textContent='₹'+Math.round(a*RET).toLocaleString('en-IN');$('ryb').textContent='₹'+Math.round(a*(1+RET)).toLocaleString('en-IN');}
-  var el=$('rinv'); if(el){el.addEventListener('input',u); u();}
+  function rup(v){return '₹'+Math.round(v).toLocaleString('en-IN');}
+  function days(){var a=$('rdin').value,b=$('rdout').value;if(!a||!b)return 0;var d=(new Date(b)-new Date(a))/86400000;return d>0?d:0;}
+  function u(){
+    var a=+$('rinv').value||0;
+    var total=a*RET;
+    var interest=a*IR*days()/365;
+    if(interest>total)interest=total;
+    var excess=total-interest;
+    $('rint').textContent=rup(interest);
+    $('rexc').textContent=rup(excess);
+    $('ryb').textContent=rup(a+total);
+  }
+  ['rinv','rdin','rdout'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',u);});
+  u();
 })();
 </script>
 </body>
