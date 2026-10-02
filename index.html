@@ -145,6 +145,8 @@
   @keyframes gradslide{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
   @media (prefers-reduced-motion:reduce){.grad{animation:none}}
   @media (max-width:620px){.ctl label{min-width:86px}.ctl .out{min-width:92px;font-size:13px}.counter{display:none}}
+  .slide.old{position:relative}
+  .slide.old::before{content:"Original proposal · deal closed";position:absolute;top:26px;left:max(24px,3.2vw);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#57617A;background:#EEF1F6;border:1px solid #E7EBF1;padding:5px 12px;border-radius:999px;z-index:5}
 </style>
 </head>
 <body>
@@ -230,6 +232,15 @@
     </section>
 
     <section class="slide">
+      <div class="wrap">
+        <div class="eyebrow reveal">For reference</div>
+        <h2 class="reveal" style="margin-top:16px">The original proposal</h2>
+        <p class="lede reveal" style="margin-top:20px;max-width:60ch">What follows is the original proposal we shared before this deal. The deal has now closed.</p>
+        <div class="flow reveal"><span><b>Deal closed</b></span><span>Original proposal follows</span></div>
+      </div>
+    </section>
+
+    <section class="slide old">
       <div class="wrap cover-grid">
         <div class="reveal">
           <div class="eyebrow">Nowroji Road · Chetpet</div>
@@ -245,7 +256,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">The idea</div>
         <h2 class="reveal" style="margin-top:16px">What we're trying to do</h2>
@@ -254,7 +265,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">Before</div>
         <h2 class="reveal" style="margin-top:16px">We've done this before — and want to do it again</h2>
@@ -269,7 +280,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">The current unit</div>
         <h2 class="reveal" style="margin-top:16px">What stands out here</h2>
@@ -283,7 +294,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">The economics</div>
         <h2 class="reveal" style="margin-top:14px">The deal in numbers</h2>
@@ -304,7 +315,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">Interactive</div>
         <h2 class="reveal" style="margin-top:12px;margin-bottom:2px">Run your own scenario</h2>
@@ -332,7 +343,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">Risk</div>
         <h2 class="reveal" style="margin-top:16px">The main risk: timing the resale</h2>
@@ -345,7 +356,7 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
         <div class="eyebrow reveal">Timeline</div>
         <h2 class="reveal" style="margin-top:16px">From purchase to payout</h2>
@@ -357,20 +368,20 @@
       </div>
     </section>
 
-    <section class="slide">
+    <section class="slide old">
       <div class="wrap">
-        <div class="eyebrow reveal">The ask</div>
-        <h2 class="reveal" style="margin-top:16px">If you'd like to take part</h2>
-        <p class="bigline reveal" style="margin-top:18px">We're putting together <span class="grad">₹3.61 Cr</span> to acquire and resell this flat, with profit shared in proportion to what each of us puts in.</p>
-        <div class="flow reveal" style="margin-top:22px"><span>Hold <b>~180 days</b></span><span>Profit shared <b>pro-rata</b></span></div>
-        <div class="points reveal" style="margin-top:6px"><div class="point"><div class="n grad">01</div><p><b>Let us know</b> if you'd like to take part.</p></div><div class="point"><div class="n grad">02</div><p><b>Have questions?</b> Please reach out — we're glad to talk it through.</p></div></div>
+        <div class="eyebrow reveal">The original ask</div>
+        <h2 class="reveal" style="margin-top:16px">How we put it together</h2>
+        <p class="bigline reveal" style="margin-top:18px">We put together <span class="grad">₹3.61 Cr</span> to acquire and resell this flat, with profit shared in proportion to what each of us put in.</p>
+        <div class="flow reveal" style="margin-top:22px"><span>Planned hold <b>~180 days</b></span><span>Profit shared <b>pro-rata</b></span></div>
+        <p class="reveal muted" style="margin-top:24px;font-size:16px;line-height:1.7;max-width:60ch"><b style="color:var(--ink)">This deal has now closed.</b> Thank you to everyone who took part. If you have any questions about the numbers, please reach out.</p>
       </div>
     </section>
 
     </div>
   <button class="arrow prev" id="prev" aria-label="Previous slide">&#8249;</button>
   <button class="arrow next" id="next" aria-label="Next slide">&#8250;</button>
-  <div class="counter"><b id="cnow">01</b> / <span id="ctot">14</span></div>
+  <div class="counter"><b id="cnow">01</b> / <span id="ctot">15</span></div>
   <div class="nav"><div class="dots" id="dots"></div></div>
 </div>
 <script>
